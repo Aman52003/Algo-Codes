@@ -1,37 +1,17 @@
-def divide (arr, low, high) :
-    pivot = arr[high]
-    i = low-1
-    
-    for j in range (low,high):
-        if(arr[j]<=pivot):
-            i = i + 1
-            temp = arr[i]
-            arr[i]= arr[j]
-            arr[j] = temp
-            
- 
-    temp = arr[i+1]
-    arr[i+1] = arr[high]
-    arr[high] = temp
-    return i + 1
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        left = []
+        right = []
+        for i in range(1, len(arr)):
+            if arr[i] < pivot:
+                left.append(arr[i])
+            else:
+                right.append(arr[i])
+        return quick_sort(left) + [pivot] + quick_sort(right)
 
-def quick(array, low, high):
-    if low < high:
- 
-        
-        pi = divide(array, low, high)
- 
-        
-        quick(array, low, pi - 1)
- 
-      
-        quick(array, pi + 1, high)
-
-
-
-arr = [8,12,24,3,36,80,19,40]
-low = 0
-high = len(arr)-1
-
-quick(arr,low,high)
-print(f'{arr}')
+my_list = list(map(int,input("enter data = ").split()))
+sorted_list = quick_sort(my_list)
+print(sorted_list)

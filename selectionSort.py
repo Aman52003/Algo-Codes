@@ -1,17 +1,16 @@
-array = [13,87,6,40,23]
+def selection_sort(arr):
+    for i in range(len(arr)):
+        # Find the minimum element in remaining unsorted array
+        min_idx = i
+        for j in range(i+1, len(arr)):
+            if arr[min_idx] > arr[j]:
+                min_idx = j
+        # Swap the found minimum element with the first element
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
-
-temp = 0
-
-for i in range(len(array)) :
-    min = i
-    for j in range(i+1,len(array)):
-        if(array[min]>array[j]):
-            min = j
-    temp = array[i]
-    array[i] = array[min]
-    array[min] = temp
-
-for i in array:
-    print(i)
-
+n = int(input("Enter the number of elements in the array: "))
+arr = []
+for i in range(n):
+    arr.append(int(input("Enter element {}: ".format(i+1))))
+selection_sort(arr)
+print("Sorted array:", arr)
